@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AK - AI Enthusiast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #000428, #004e92);
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        #logo {
+            font-size: 60px;
+            font-weight: bold;
+            position: relative;
+            cursor: pointer;
+            color: white;
+            text-shadow: 0 0 20px cyan, 0 0 40px blue;
+            animation: flicker 1.5s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { text-shadow: 0 0 10px cyan, 0 0 30px blue; }
+            100% { text-shadow: 0 0 20px cyan, 0 0 40px blue; }
+        }
+        .profile {
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .profile-img {
+            margin: 20px auto;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            box-shadow: 0 0 20px cyan;
+            transition: transform 0.5s ease-in-out;
+        }
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+        .role {
+            position: absolute;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .role:hover {
+            transform: scale(1.1);
+        }
+        .frontend { top: 30%; left: 10%; }
+        .data-analyst { top: 50%; left: 10%; }
+        .gen-ai { top: 70%; left: 10%; }
+        .details {
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="logo" onclick="showProfile()">AK</div>
+    <div class="profile" id="profile">
+        <h1>Welcome to My Website!</h1>
+        <p>Hi! I am Ayush Kumar Gupta, a passionate coder with proficiency in HTML, CSS, JavaScript, C, and Python. I am deeply interested in making strides in the AI domain.</p>
+
+        <img src="ayush.png" class="profile-img" alt="A picture of me" />
+        
+        <div class="role frontend" onclick="toggleDetails('frontend-details')">Frontend Developer →</div>
+        <div class="role data-analyst" onclick="toggleDetails('data-analyst-details')">Data Analyst →</div>
+        <div class="role gen-ai" onclick="toggleDetails('gen-ai-details')">Gen-AI Developer →</div>
+
+        <div id="frontend-details" class="details">Knows HTML, CSS, JavaScript, React, MERN-Stack Developer</div>
+        <div id="data-analyst-details" class="details">Skilled in Data Analysis, Python, Pandas, SQL</div>
+        <div id="gen-ai-details" class="details">Expertise in Machine Learning, Deep Learning, AI Model Development</div>
+    </div>
+    <script>
+        function showProfile() {
+            document.getElementById('profile').style.display = 'block';
+        }
+        function previewPhoto() {
+            const file = document.getElementById('upload').files[0];
+            const reader = new FileReader();
+            reader.onloadend = function() {
+                const img = document.getElementById('profile-img');
+                img.src = reader.result;
+                img.style.display = 'block';
+            }
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+        function toggleDetails(id) {
+            const details = document.getElementById(id);
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
